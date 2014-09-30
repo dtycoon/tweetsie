@@ -125,8 +125,9 @@ class TweetDetailViewController: UIViewController {
             let reply = myTweet!
             let escapedAddress = reply.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
             var tweetItem = tweetsCopy?[tweetIndex]
-            var author = tweetsCopy?[tweetIndex].user?.screenname!
+            var author = (tweetsCopy?[tweetIndex].user?.screenname)!
             var response = "@\(author) \(reply)"
+            println(" reply = \(reply) response = \(response)")
             let par:Int = tweetItem!.id_int!
             var parameterInt:NSDictionary = ["in_reply_to_status_id":par, "status":response]
             

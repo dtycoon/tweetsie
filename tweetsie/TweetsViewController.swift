@@ -97,7 +97,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         var tweetUrl = cellTweet?.user?.profileImageUrl
         if(tweetUrl != nil)
         {
-            println("  profileImageUrl = \(tweetUrl!)")
             cell.tweetUserImage.setImageWithURL(NSURL(string: tweetUrl!))
         }
         

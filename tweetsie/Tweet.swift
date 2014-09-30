@@ -36,12 +36,6 @@ class Tweet: NSObject {
         createdAt = formatter.dateFromString("createdAtString")
         //        delayedTime = Tweet.formatCreatedTimeToUserReadableTime(self.createdAt!)
         
-        println("user for the tweet  = \(user?.name) screen name = \(user?.screenname)" )
-        println("total number of user for tweet  = \(user?.dictionary.count) ")
-        println("tweet is = \(text) \n")
-        println(" user dictionary = \(user?.dictionary)" )
-        
-        println("------------")
     }
     
     class func formatCreatedTimeToUserReadableTime(createdAt: NSDate) -> String {

@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
+       
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+       
         if(User.currentUser != nil)
         {
             //Go to the logged in screeb
@@ -26,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.rootViewController = vc
             
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+            
         }
         return true
     }

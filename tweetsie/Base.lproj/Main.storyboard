@@ -94,14 +94,14 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trk-HP-nVC">
-                                                    <rect key="frame" x="190" y="100" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k0-re-kcw">
+                                                    <rect key="frame" x="304" y="103" width="24" height="24"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k0-re-kcw">
-                                                    <rect key="frame" x="304" y="103" width="24" height="24"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trk-HP-nVC">
+                                                    <rect key="frame" x="218" y="97" width="30" height="30"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -110,8 +110,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="favButton" destination="7k0-re-kcw" id="QLB-Ev-K0f"/>
-                                            <outlet property="replyButton" destination="trk-HP-nVC" id="Al8-lE-2WL"/>
-                                            <outlet property="retweetButton" destination="trk-HP-nVC" id="e8C-eR-A3J"/>
+                                            <outlet property="replyButton" destination="Q5L-eN-aRo" id="pW5-hF-qex"/>
+                                            <outlet property="retweetButton" destination="trk-HP-nVC" id="IZi-r9-UVa"/>
                                             <outlet property="tweetCreatedTime" destination="Zch-QQ-OnW" id="Z0O-rJ-2FA"/>
                                             <outlet property="tweetText" destination="4O6-YT-Zkb" id="HAS-dm-EN3"/>
                                             <outlet property="tweetUser" destination="ftO-mv-nmb" id="sea-dV-idj"/>
