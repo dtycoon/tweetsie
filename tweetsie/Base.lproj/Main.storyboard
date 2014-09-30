@@ -23,7 +23,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onLoginPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1qc-v3-jpO"/>
-                                    <segue destination="oUP-by-6AT" kind="presentation" identifier="loginSegue" id="eDf-Se-pEi"/>
+                                    <segue destination="oUP-by-6AT" kind="presentation" identifier="anotherloginSegue" id="eDf-Se-pEi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -360,10 +360,10 @@
             </objects>
             <point key="canvasLocation" x="747" y="-550"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tweets Detail Navigation View Controller-->
         <scene sceneID="0NK-cL-3Gt">
             <objects>
-                <navigationController storyboardIdentifier="TweetsDetailNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="RFz-vi-9Uo" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsDetailNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="RFz-vi-9Uo" customClass="TweetsDetailNavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3z2-Ui-85m">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

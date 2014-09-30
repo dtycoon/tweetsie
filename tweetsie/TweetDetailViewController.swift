@@ -64,6 +64,8 @@ class TweetDetailViewController: UIViewController {
         
     }
     func populateTweet() {
+        if(tweetsCopy != nil)
+        {
         var tweetItem = tweetsCopy?[tweetIndex]
         
         var retLabel = "\((tweetItem?.user?.name)!) retweeted"
@@ -110,7 +112,7 @@ class TweetDetailViewController: UIViewController {
         }
 
         
-        
+        }
         
 
     }
@@ -164,21 +166,22 @@ class TweetDetailViewController: UIViewController {
             println("onFavPressed")
             
             var tweetItem = tweetsCopy?[tweetIndex]
-            var author = tweetsCopy?[tweetIndex].user?.screenname!
+            var author = (tweetsCopy?[tweetIndex].user?.screenname)!
+            println("onFavPressed author = \(author) ")
             var previousState = tweetItem?.favorited
             tweetItem?.favorited = true
             
 
-            var response = "FAV @\(author)"
             let par:Int = tweetItem!.id_int!
-            var parameterInt:NSDictionary = ["in_reply_to_status_id":par, "status":response]
+            println("onFavPressed id  = \(par) ")
+            var parameterInt:NSDictionary = ["id":par]
             
             
             var id_str = tweetItem?.id_str
             
-            var url_post = "1.1/statuses/update.json" as String
+            var url_post = "1.1/favorites/create.json" as String
             TweetsieClient.sharedInstance.tweetSelf(url_post, index: tweetIndex, params: parameterInt,    tweetCompletionError: { (url_post, index, error) -> () in
-                println("error replying to the post")
+                println("error replying to the post error = \(error)")
                 var tweet = self.tweetsCopy?[index!]
                 tweet?.favorited = previousState
             })

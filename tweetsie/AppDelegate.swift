@@ -21,19 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             //Go to the logged in screeb
             println("Current user detected: \(User.currentUser?.name)")
+            var vc =
+        storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationViewController") as UIViewController
             
-            
-     //       var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationViewController") as UIViewController
-            var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
-            
-            window?.rootViewController = vc
+            self.window?.rootViewController = vc
         }
         return true
     }
     
     func userDidLogout() {
         var vc = storyboard.instantiateInitialViewController() as UIViewController
-        window?.rootViewController = vc
+        self.window?.rootViewController = vc
     }
 
     func applicationWillResignActive(application: UIApplication) {

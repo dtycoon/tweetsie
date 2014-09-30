@@ -13,10 +13,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
 
        
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl:UIRefreshControl!
     
     var tweets: [Tweet]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("viewDidload called on TweetsViewController")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.whiteColor()
@@ -24,6 +26,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         tableView.separatorColor = UIColor.darkGrayColor()
 
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTable", name: tweetsDownloaded, object: nil)
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
         
         TweetsieClient.sharedInstance.homeTimeWithParams(nil, completion: { (tweets, error) -> () in
             self.tweets = tweets
@@ -155,6 +162,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
 
     func tweetFavorated(tweetIndex: Int)
     {
+        self.refreshControl.endRefreshing()
         updateTable()
     }
 }

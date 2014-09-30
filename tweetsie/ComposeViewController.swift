@@ -50,20 +50,16 @@ class ComposeViewController: UIViewController {
         if(myTweet != nil)
         {
             let address = myTweet!
-            let escapedAddress = address.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+            println(" tweet composition = \(address)")
             var parameter = ["status":address]
-            
              var url_post = "1.1/statuses/update.json" as String
  
-      /*      TweetsieClient.sharedInstance.tweetSelf(url_post: url_post, params: parameter, tweetCompletionError: { (url_post, error) -> () in
-                println("error occured \(error)")
-            }) */
-            
-            TweetsieClient.sharedInstance.tweetSelf(url_post,index: 0, params: nil, tweetCompletionError: { (url_post, index, error) -> () in
+            TweetsieClient.sharedInstance.tweetSelf(url_post,index: 0, params: parameter, tweetCompletionError: { (url_post, index, error) -> () in
                 println("error in tweetSelf = \(error)")
             })
         }
 
+        dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // MARK: - Navigation

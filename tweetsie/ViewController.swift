@@ -27,7 +27,8 @@ class ViewController: UIViewController {
         TweetsieClient.sharedInstance.loginWithCompletion() {
             (user: User?, error: NSError?) in
             if user != nil {
-                self.performSegueWithIdentifier("loginSegue", sender: self)
+                println("calling anotherloginSegue segue")
+                self.performSegueWithIdentifier("anotherloginSegue", sender: self)
                 //perform segue
             } else {
                 println("user is nil")
