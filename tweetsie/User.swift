@@ -29,7 +29,7 @@ class User: NSObject {
         profileImageUrl = dictionary["profile_image_url"] as? String
         tagline = dictionary["descripton"] as? String
     }
-   
+    
     func logout() {
         User.currentUser = nil
         TweetsieClient.sharedInstance.requestSerializer.removeAccessToken()
@@ -39,13 +39,13 @@ class User: NSObject {
     class var currentUser: User? {
         get {
         if _currentUser == nil {
-            var data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
-            if (data != nil) {
-                var dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as NSDictionary
-                _currentUser = User(dictionary: dictionary)
-                }
-            }
-            return _currentUser
+        var data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
+        if (data != nil) {
+        var dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as NSDictionary
+        _currentUser = User(dictionary: dictionary)
+        }
+        }
+        return _currentUser
         }
         set(user){
             _currentUser = user

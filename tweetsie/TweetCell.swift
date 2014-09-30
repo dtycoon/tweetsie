@@ -9,7 +9,7 @@
 import UIKit
 
 class TweetCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var topRetweetIcon: UIImageView!
     
@@ -29,26 +29,26 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetText: UILabel!
     
     
-   
+    
     
     @IBOutlet weak var replyButton: UIButton!
-   
+    
     
     @IBOutlet weak var retweetButton: UIButton!
     
     @IBOutlet weak var favButton: UIButton!
     
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

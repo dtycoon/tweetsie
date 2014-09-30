@@ -15,7 +15,7 @@ let tweetsieBaseURL: NSURL =  NSURL(string: "https://api.twitter.com/")
 
 
 class TweetsieClient: BDBOAuth1RequestOperationManager {
-   
+    
     var loginCompletion: ((user: User?, error: NSError?) -> ())?
     class var sharedInstance: TweetsieClient {
     struct Static {
@@ -26,29 +26,29 @@ class TweetsieClient: BDBOAuth1RequestOperationManager {
     func homeTimeWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         println("homeTimeWithParams called on Twitterclient")
         GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-           // println("home timeline: \(response)")
+            // println("home timeline: \(response)")
             var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
             
             completion(tweets: tweets, error: nil)
             NSNotificationCenter.defaultCenter().postNotificationName(tweetsDownloaded, object: nil)
             
-
+            
             }, failure: { (operaton:AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println("error getting current user")
                 completion(tweets: nil, error: error)
                 self.loginCompletion?(user: nil, error: error)
         })
-
+        
         
     }
     
     func retweet(url_post: String?, index: Int?, params: NSDictionary?, retweetCompletionError: (url_post: String?, index: Int?, error: NSError?) -> ()) {
         //var url_post = "1.1/statuses/retweet/\(id_str!).json" as String
         println("url = \(url_post!)")
-            
+        
         POST(url_post!,  parameters: params, success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-             println("home retweet response: \(response)")
-           // var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
+            println("home retweet response: \(response)")
+            // var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
             
             }, failure: { (operaton:AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println("error retweeting tweet_id=\(url_post!) index =\(index!)")
@@ -58,19 +58,19 @@ class TweetsieClient: BDBOAuth1RequestOperationManager {
         
         
     }
-
-/*    func tweetSelf (url_post: String?, params: NSDictionary?, tweetCompletionError: (url_post: String?, error: NSError?) -> ()) {
-        println("url = \(url_post!)")
-        
-        POST(url_post!,  parameters: params, success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            println("tweet response: \(response)")
-            
-            }, failure: { (operaton:AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println("error tweeting tweet_id=\(url_post!) ")
-                tweetCompletionError(url_post: url_post, error: error)
-        })
-        
-        
+    
+    /*    func tweetSelf (url_post: String?, params: NSDictionary?, tweetCompletionError: (url_post: String?, error: NSError?) -> ()) {
+    println("url = \(url_post!)")
+    
+    POST(url_post!,  parameters: params, success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+    println("tweet response: \(response)")
+    
+    }, failure: { (operaton:AFHTTPRequestOperation!, error: NSError!) -> Void in
+    println("error tweeting tweet_id=\(url_post!) ")
+    tweetCompletionError(url_post: url_post, error: error)
+    })
+    
+    
     } */
     func tweetSelf (url_post: String?, index: Int?, params: NSDictionary?, tweetCompletionError: (url_post: String?, index: Int?, error: NSError?) -> ()) {
         println("url = \(url_post!)")
@@ -85,7 +85,7 @@ class TweetsieClient: BDBOAuth1RequestOperationManager {
         
         
     }
-
+    
     
     func loginWithCompletion (completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
@@ -101,7 +101,7 @@ class TweetsieClient: BDBOAuth1RequestOperationManager {
                 println("Failed to get request token")
                 self.loginCompletion?(user: nil, error: error)
         }
-
+        
     }
     
     func openURL( url: NSURL)
@@ -123,7 +123,7 @@ class TweetsieClient: BDBOAuth1RequestOperationManager {
                     self.loginCompletion?(user: nil, error: error)
             })
             
-        }) { (error:NSError!) -> Void in
+            }) { (error:NSError!) -> Void in
                 println("Failed to receive access token")
                 self.loginCompletion?(user: nil, error: error)
         }

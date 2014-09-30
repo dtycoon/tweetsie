@@ -10,8 +10,8 @@ import UIKit
 
 let tweetsDownloaded = "tweetsDownloaded"
 class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource, TweetDetailViewControllerDelegate {
-
-       
+    
+    
     @IBOutlet weak var tableView: UITableView!
     var refreshControl:UIRefreshControl!
     
@@ -24,8 +24,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         tableView.backgroundColor = UIColor.whiteColor()
         tableView.tintColor = UIColor.lightGrayColor()
         tableView.separatorColor = UIColor.darkGrayColor()
-
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTable", name: tweetsDownloaded, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTable", name: tweetsDownloaded, object: nil)
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
@@ -36,9 +36,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
             self.tweets = tweets
         })
         // Do any additional setup after loading the view.
-         self.tableView.reloadData()
+        self.tableView.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,17 +53,17 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         User.currentUser?.logout()
     }
     
- 
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
     func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int
     {
@@ -89,18 +89,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         
         /*   if(retLabel != nil)
         {
-            cell.topRetweetUser.text = "\(retLabel!) retweeted"
+        cell.topRetweetUser.text = "\(retLabel!) retweeted"
         } */
         
-
+        
         
         var tweetUrl = cellTweet?.user?.profileImageUrl
         if(tweetUrl != nil)
         {
             println("  profileImageUrl = \(tweetUrl!)")
-           cell.tweetUserImage.setImageWithURL(NSURL(string: tweetUrl!))
+            cell.tweetUserImage.setImageWithURL(NSURL(string: tweetUrl!))
         }
-
+        
         cell.tweetUser.text = cellTweet?.user?.name
         
         cell.tweetUserSN.text = cellTweet?.user?.screenname
@@ -129,7 +129,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
             cell.retweetButton.setImage(UIImage(named: "retweet_hover.png"), forState: .Highlighted)
         }
         
-
+        
         
         
         return cell
@@ -140,7 +140,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         var tweetDetinationNavigationController = segue.destinationViewController as UINavigationController
@@ -159,7 +159,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
             
         }
     }
-
+    
     func tweetFavorated(tweetIndex: Int)
     {
         self.refreshControl.endRefreshing()

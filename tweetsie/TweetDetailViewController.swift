@@ -12,7 +12,7 @@ protocol TweetDetailViewControllerDelegate {
     func tweetFavorated (tweetIndes:Int)
 }
 class TweetDetailViewController: UIViewController {
-
+    
     var tweetIndex:Int!
     var tweetsCopy: [Tweet]?
     var didCallFavorate:Bool = false
@@ -26,7 +26,7 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var userTweetLabel: UILabel!
     
     @IBOutlet weak var tweetTimeLabel: UILabel!
- 
+    
     @IBOutlet weak var retweetTimesLabel: UILabel!
     
     @IBOutlet weak var tweetFavLabel: UILabel!
@@ -46,7 +46,7 @@ class TweetDetailViewController: UIViewController {
         self.populateTweet()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,7 +56,7 @@ class TweetDetailViewController: UIViewController {
         println("onTapBack received")
         goBackToHome()
     }
-
+    
     func goBackToHome()
     {
         delegate.tweetFavorated(tweetIndex)
@@ -66,57 +66,57 @@ class TweetDetailViewController: UIViewController {
     func populateTweet() {
         if(tweetsCopy != nil)
         {
-        var tweetItem = tweetsCopy?[tweetIndex]
-        
-        var retLabel = "\((tweetItem?.user?.name)!) retweeted"
-        
-     /*   if(retLabel != nil)
-        {
+            var tweetItem = tweetsCopy?[tweetIndex]
+            
+            var retLabel = "\((tweetItem?.user?.name)!) retweeted"
+            
+            /*   if(retLabel != nil)
+            {
             self.topRetweetUserLabel.text = "\(retLabel!) retweeted"
-        } */
-        
-        var tweetUrl = tweetItem?.user?.profileImageUrl
-        if(tweetUrl != nil)
-        {
-            println("  profileImageUrl = \(tweetUrl!)")
-            userImage.setImageWithURL(NSURL(string: tweetUrl!))
+            } */
+            
+            var tweetUrl = tweetItem?.user?.profileImageUrl
+            if(tweetUrl != nil)
+            {
+                println("  profileImageUrl = \(tweetUrl!)")
+                userImage.setImageWithURL(NSURL(string: tweetUrl!))
+            }
+            
+            userNameLabel.text = tweetItem?.user?.name
+            
+            userScreenName.text = tweetItem?.user?.screenname
+            userTweetLabel.text = tweetItem?.text
+            tweetTimeLabel.text = tweetItem?.createdAtString
+            retweetTimesLabel.text = "\((tweetItem?.retweetCount)!) RETWEETS"
+            tweetFavLabel.text = "\((tweetItem?.favoriteCount)!) FAVORITES"
+            
+            if(tweetItem?.favorited == true)
+            {
+                favorateButton.setImage(UIImage(named: "favorite_on.png"),forState: .Normal)
+            }
+            else
+            {
+                favorateButton.setImage(UIImage(named: "favorite.png"),forState: .Normal)
+                favorateButton.setImage(UIImage(named: "favorite_hover.png"),forState: .Highlighted)
+            }
+            replyButton.setImage(UIImage(named: "reply.png"), forState: .Normal)
+            
+            if(tweetItem?.retweeted == true)
+            {
+                retweetButton.setImage(UIImage(named: "retweet_on.png"), forState: .Normal)
+            }
+            else
+            {
+                retweetButton.setImage(UIImage(named: "retweet.png"), forState: .Normal)
+                retweetButton.setImage(UIImage(named: "retweet_hover.png"), forState: .Highlighted)
+            }
+            
+            
         }
         
-        userNameLabel.text = tweetItem?.user?.name
         
-        userScreenName.text = tweetItem?.user?.screenname
-        userTweetLabel.text = tweetItem?.text
-        tweetTimeLabel.text = tweetItem?.createdAtString
-        retweetTimesLabel.text = "\((tweetItem?.retweetCount)!) RETWEETS"
-        tweetFavLabel.text = "\((tweetItem?.favoriteCount)!) FAVORITES"
-       
-        if(tweetItem?.favorited == true)
-        {
-            favorateButton.setImage(UIImage(named: "favorite_on.png"),forState: .Normal)
-        }
-        else
-        {
-            favorateButton.setImage(UIImage(named: "favorite.png"),forState: .Normal)
-            favorateButton.setImage(UIImage(named: "favorite_hover.png"),forState: .Highlighted)
-        }
-        replyButton.setImage(UIImage(named: "reply.png"), forState: .Normal)
-        
-        if(tweetItem?.retweeted == true)
-        {
-            retweetButton.setImage(UIImage(named: "retweet_on.png"), forState: .Normal)
-        }
-        else
-        {
-            retweetButton.setImage(UIImage(named: "retweet.png"), forState: .Normal)
-            retweetButton.setImage(UIImage(named: "retweet_hover.png"), forState: .Highlighted)
-        }
-
-        
-        }
-        
-
     }
-
+    
     @IBAction func onReplyPressed(sender: AnyObject) {
         println("onReplyPressed")
         var myTweet = userTweetReply.text
@@ -140,7 +140,7 @@ class TweetDetailViewController: UIViewController {
         }
         goBackToHome()
     }
-   
+    
     @IBAction func onRetweetPressed(sender: AnyObject) {
         println("onRetweetPressed")
         var tweetItem = tweetsCopy?[tweetIndex]
@@ -148,56 +148,56 @@ class TweetDetailViewController: UIViewController {
         tweetItem?.retweeted = true
         let par:Int = tweetItem!.id_int!
         var parameterInt:NSDictionary = ["id":par]
- 
+        
         var id_str = tweetItem?.id_str
         
         var url_post = "1.1/statuses/retweet/\(par).json" as String
         var url_post_id = "1.1/statuses/retweet/:id.json" as String
-
+        
         
         TweetsieClient.sharedInstance.retweet(url_post, index: tweetIndex, params: nil, retweetCompletionError: { (url_post, index, error) -> () in
             var tweet = self.tweetsCopy?[index!]
             tweet?.retweeted = previousState
         })
         
-            }
+    }
     
-        @IBAction func onFavPressed(sender: AnyObject) {
-            println("onFavPressed")
-            
-            var tweetItem = tweetsCopy?[tweetIndex]
-            var author = (tweetsCopy?[tweetIndex].user?.screenname)!
-            println("onFavPressed author = \(author) ")
-            var previousState = tweetItem?.favorited
-            tweetItem?.favorited = true
-            
-
-            let par:Int = tweetItem!.id_int!
-            println("onFavPressed id  = \(par) ")
-            var parameterInt:NSDictionary = ["id":par]
-            
-            
-            var id_str = tweetItem?.id_str
-            
-            var url_post = "1.1/favorites/create.json" as String
-            TweetsieClient.sharedInstance.tweetSelf(url_post, index: tweetIndex, params: parameterInt,    tweetCompletionError: { (url_post, index, error) -> () in
-                println("error replying to the post error = \(error)")
-                var tweet = self.tweetsCopy?[index!]
-                tweet?.favorited = previousState
-            })
-            
-
+    @IBAction func onFavPressed(sender: AnyObject) {
+        println("onFavPressed")
+        
+        var tweetItem = tweetsCopy?[tweetIndex]
+        var author = (tweetsCopy?[tweetIndex].user?.screenname)!
+        println("onFavPressed author = \(author) ")
+        var previousState = tweetItem?.favorited
+        tweetItem?.favorited = true
+        
+        
+        let par:Int = tweetItem!.id_int!
+        println("onFavPressed id  = \(par) ")
+        var parameterInt:NSDictionary = ["id":par]
+        
+        
+        var id_str = tweetItem?.id_str
+        
+        var url_post = "1.1/favorites/create.json" as String
+        TweetsieClient.sharedInstance.tweetSelf(url_post, index: tweetIndex, params: parameterInt,    tweetCompletionError: { (url_post, index, error) -> () in
+            println("error replying to the post error = \(error)")
+            var tweet = self.tweetsCopy?[index!]
+            tweet?.favorited = previousState
+        })
+        
+        
     }
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
     
 }
