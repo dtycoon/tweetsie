@@ -90,18 +90,21 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5L-eN-aRo">
                                                     <rect key="frame" x="112" y="103" width="24" height="24"/>
+                                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k0-re-kcw">
                                                     <rect key="frame" x="304" y="103" width="24" height="24"/>
+                                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trk-HP-nVC">
                                                     <rect key="frame" x="218" y="97" width="30" height="30"/>
+                                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -127,11 +130,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="tzg-93-w9B">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="N9O-9e-pnc">
+                            <color key="tintColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onLogout:" destination="BrT-eN-CiR" id="Hnb-pE-sIa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="SNP-0X-y9V">
+                            <color key="tintColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="qNL-Kx-CkS" kind="presentation" identifier="newSegue" id="1H1-vE-8uY"/>
                             </connections>
@@ -223,7 +228,9 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ro-04-Hyg">
                                 <rect key="frame" x="52" y="355" width="24" height="24"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
+                                    <color key="titleColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -232,7 +239,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybq-XY-dPq">
                                 <rect key="frame" x="212" y="355" width="24" height="24"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
+                                    <color key="titleColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -241,7 +250,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylf-Yf-iFm">
                                 <rect key="frame" x="132" y="355" width="24" height="24"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
+                                    <color key="titleColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -253,11 +264,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="jP1-oK-A9p">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Home" id="QSq-nv-pIr">
+                            <color key="tintColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onHomePressed:" destination="7EC-j2-tY5" id="9sK-zY-3Nu"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Reply" id="mno-Ku-ePm">
+                            <color key="tintColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onReplyPressed:" destination="7EC-j2-tY5" id="zxZ-aG-yiA"/>
                             </connections>
@@ -320,11 +333,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="UXM-Xa-SCp">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="yRP-Zg-r8V">
+                            <color key="tintColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onTapCancel:" destination="J3g-dE-l4e" id="EbL-97-aZO"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="sbG-8Q-Mch">
+                            <color key="tintColor" red="0.97598647240000003" green="0.97453186629999999" blue="0.99994021050000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onTweetAction:" destination="J3g-dE-l4e" id="Mwc-LY-IHK"/>
                             </connections>

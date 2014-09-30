@@ -43,6 +43,7 @@ class TweetDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         navigationController?.navigationBar.barTintColor =  UIColor(red: 0.24, green:0.47, blue:0.85 , alpha:1.0)
         self.populateTweet()
         // Do any additional setup after loading the view.
     }
@@ -93,6 +94,7 @@ class TweetDetailViewController: UIViewController {
             if(tweetItem?.favorited == true)
             {
                 favorateButton.setImage(UIImage(named: "favorite_on.png"),forState: .Normal)
+                favorateButton.tintColor = UIColor.orangeColor()
             }
             else
             {
@@ -104,6 +106,7 @@ class TweetDetailViewController: UIViewController {
             if(tweetItem?.retweeted == true)
             {
                 retweetButton.setImage(UIImage(named: "retweet_on.png"), forState: .Normal)
+                retweetButton.tintColor = UIColor.orangeColor()
             }
             else
             {
@@ -120,19 +123,15 @@ class TweetDetailViewController: UIViewController {
     @IBAction func onReplyPressed(sender: AnyObject) {
         println("onReplyPressed")
         var myTweet = userTweetReply.text
-        if(myTweet != nil)
+        if(myTweet != nil || myTweet != "")
         {
             let reply = myTweet!
-            let escapedAddress = reply.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
             var tweetItem = tweetsCopy?[tweetIndex]
             var author = (tweetsCopy?[tweetIndex].user?.screenname)!
             var response = "@\(author) \(reply)"
             println(" reply = \(reply) response = \(response)")
             let par:Int = tweetItem!.id_int!
             var parameterInt:NSDictionary = ["in_reply_to_status_id":par, "status":response]
-            
-            
-            var id_str = tweetItem?.id_str
             
             var url_post = "1.1/statuses/update.json" as String
             TweetsieClient.sharedInstance.tweetSelf(url_post, index: tweetIndex, params: parameterInt,    tweetCompletionError: { (url_post, index, error) -> () in
@@ -153,22 +152,20 @@ class TweetDetailViewController: UIViewController {
         var id_str = tweetItem?.id_str
         
         var url_post = "1.1/statuses/retweet/\(par).json" as String
-        var url_post_id = "1.1/statuses/retweet/:id.json" as String
-        
         
         TweetsieClient.sharedInstance.retweet(url_post, index: tweetIndex, params: nil, retweetCompletionError: { (url_post, index, error) -> () in
             var tweet = self.tweetsCopy?[index!]
             tweet?.retweeted = previousState
+            self.populateTweet()
         })
         
+        populateTweet()
     }
     
     @IBAction func onFavPressed(sender: AnyObject) {
         println("onFavPressed")
         
         var tweetItem = tweetsCopy?[tweetIndex]
-        var author = (tweetsCopy?[tweetIndex].user?.screenname)!
-        println("onFavPressed author = \(author) ")
         var previousState = tweetItem?.favorited
         tweetItem?.favorited = true
         
@@ -178,16 +175,15 @@ class TweetDetailViewController: UIViewController {
         var parameterInt:NSDictionary = ["id":par]
         
         
-        var id_str = tweetItem?.id_str
-        
         var url_post = "1.1/favorites/create.json" as String
         TweetsieClient.sharedInstance.tweetSelf(url_post, index: tweetIndex, params: parameterInt,    tweetCompletionError: { (url_post, index, error) -> () in
             println("error replying to the post error = \(error)")
             var tweet = self.tweetsCopy?[index!]
             tweet?.favorited = previousState
+            self.populateTweet()
         })
         
-        
+        populateTweet()
     }
     
     /*

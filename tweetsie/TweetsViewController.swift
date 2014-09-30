@@ -25,6 +25,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         tableView.tintColor = UIColor.lightGrayColor()
         tableView.separatorColor = UIColor.darkGrayColor()
         
+        
+        navigationController?.navigationBar.barTintColor =  UIColor(red: 0.24, green:0.47, blue:0.85 , alpha:1.0)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTable", name: tweetsDownloaded, object: nil)
         
         self.refreshControl = UIRefreshControl()
@@ -109,10 +112,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         
         if(cellTweet?.favorited == true)
         {
+            println(" for row = \(indexPath.row) favorite_on.png")
             cell.favButton.setImage(UIImage(named: "favorite_on.png"),forState: .Normal)
+            cell.favButton.tintColor = UIColor.orangeColor()
+            
         }
         else
         {
+            println(" for row = \(indexPath.row) favorite.png")
             cell.favButton.setImage(UIImage(named: "favorite.png"),forState: .Normal)
             cell.favButton.setImage(UIImage(named: "favorite_hover.png"),forState: .Highlighted)
         }
@@ -121,14 +128,13 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         if(cellTweet?.retweeted == true)
         {
             cell.retweetButton.setImage(UIImage(named: "retweet_on.png"), forState: .Normal)
+            cell.retweetButton.tintColor = UIColor.orangeColor()
         }
         else
         {
             cell.retweetButton.setImage(UIImage(named: "retweet.png"), forState: .Normal)
             cell.retweetButton.setImage(UIImage(named: "retweet_hover.png"), forState: .Highlighted)
         }
-        
-        
         
         
         return cell

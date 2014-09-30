@@ -23,7 +23,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var userInputView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         navigationController?.navigationBar.barTintColor =  UIColor(red: 0.24, green:0.47, blue:0.85 , alpha:1.0)
         userName.text = User.currentUser?.name
         screenName.text = User.currentUser?.screenname
         var imageUrl = User.currentUser?.profileImageUrl
