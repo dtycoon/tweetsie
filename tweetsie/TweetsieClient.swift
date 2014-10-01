@@ -26,7 +26,7 @@ class TweetsieClient: BDBOAuth1RequestOperationManager {
     func homeTimeWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         println("homeTimeWithParams called on Twitterclient")
         GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            // println("home timeline: \(response)")
+             println("homeTimeWithParams successful")
             var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
             
             completion(tweets: tweets, error: nil)

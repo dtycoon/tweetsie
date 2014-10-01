@@ -24,7 +24,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onLoginPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1qc-v3-jpO"/>
-                                    <segue destination="ESF-IR-gQJ" kind="presentation" identifier="loginSegue" id="1g6-7B-XuH"/>
+                                    <segue destination="ESF-IR-gQJ" kind="show" identifier="loginSegue" id="1g6-7B-XuH"/>
                                 </connections>
                             </button>
                         </subviews>
