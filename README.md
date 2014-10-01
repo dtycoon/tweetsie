@@ -20,4 +20,4 @@ Optional: Replies should be prefixed with the username and the reply_id should b
 Optional: User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 
 
-![alt tag](https://raw.github.com/dtycoon/yelppy/master/tweetsie.gif)
+![alt tag](https://raw.github.com/dtycoon/tweetsie/master/tweetsie.gif)
