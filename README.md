@@ -1,4 +1,4 @@
-
+Development time: ~10 hours
 Completed
 -------------
 User can sign in using OAuth login flow
