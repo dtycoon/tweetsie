@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //Go to the logged in screeb
             println("Current user detected: \(User.currentUser?.name)")
             var vc =
-            storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationViewController") as UIViewController
+            storyboard.instantiateViewControllerWithIdentifier("TweetsNagivationViewController") as UIViewController
             
             self.window?.rootViewController = vc
             

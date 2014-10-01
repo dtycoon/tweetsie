@@ -19,6 +19,7 @@ class TweetDetailViewController: UIViewController {
     var delegate: TweetDetailViewControllerDelegate!
     
     
+    @IBOutlet weak var retweetStaticButton: UIButton!
     @IBOutlet weak var topRetweetUserLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -43,6 +44,7 @@ class TweetDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.retweetStaticButton.setImage(UIImage(named: "retweet.png"), forState: .Normal)
          navigationController?.navigationBar.barTintColor =  UIColor(red: 0.24, green:0.47, blue:0.85 , alpha:1.0)
         self.populateTweet()
         // Do any additional setup after loading the view.
@@ -85,7 +87,8 @@ class TweetDetailViewController: UIViewController {
             
             userNameLabel.text = tweetItem?.user?.name
             
-            userScreenName.text = tweetItem?.user?.screenname
+            var sn = tweetItem?.user?.screenname
+            userScreenName.text = "@" + sn!
             userTweetLabel.text = tweetItem?.text
             tweetTimeLabel.text = tweetItem?.createdAtString
             retweetTimesLabel.text = "\((tweetItem?.retweetCount)!) RETWEETS"
@@ -131,6 +134,7 @@ class TweetDetailViewController: UIViewController {
             var response = "@\(author) \(reply)"
             println(" reply = \(reply) response = \(response)")
             let par:Int = tweetItem!.id_int!
+            println(" in_reply_to_status_id = \(par)")
             var parameterInt:NSDictionary = ["in_reply_to_status_id":par, "status":response]
             
             var url_post = "1.1/statuses/update.json" as String

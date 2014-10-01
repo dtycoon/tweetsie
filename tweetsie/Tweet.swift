@@ -33,8 +33,8 @@ class Tweet: NSObject {
         id_int = dictionary["id"] as? Int
         var formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM dd HH:mm:ss Z y"
-        createdAt = formatter.dateFromString("createdAtString")
-        //        delayedTime = Tweet.formatCreatedTimeToUserReadableTime(self.createdAt!)
+        createdAt = formatter.dateFromString(createdAtString!)
+        delayedTime = Tweet.formatCreatedTimeToUserReadableTime(self.createdAt!)
         
     }
     
@@ -51,7 +51,7 @@ class Tweet: NSObject {
         } else if (timeSinceCreationMins >= 1440) {
             return "\(timeSinceCreationMins/1440)d"
         }
-        return "now"
+        return ""
     }
     
     class func tweetsWithArray (array: [NSDictionary]) -> [Tweet] {

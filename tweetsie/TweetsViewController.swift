@@ -105,8 +105,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         
         cell.tweetUser.text = cellTweet?.user?.name
         
-        cell.tweetUserSN.text = cellTweet?.user?.screenname
-        cell.tweetCreatedTime.text = cellTweet?.createdAtString
+        var sn = cellTweet?.user?.screenname
+        cell.tweetUserSN.text =   "@" + sn!
+       // cell.tweetCreatedTime.text = cellTweet?.createdAtString
+        var timedelay = cellTweet?.delayedTime
+        cell.tweetCreatedTime.text = timedelay! + " ago"
         cell.tweetText.text = cellTweet?.text
         
         
@@ -161,9 +164,32 @@ class TweetsViewController: UIViewController, UITableViewDelegate,  UITableViewD
         else
         {
             var composeViewController = tweetDetinationNavigationController.viewControllers[0] as ComposeViewController
+                composeViewController.delegate = self
             
         }
     }
+    
+  /*  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var tweetDetailsViewController = segue.destinationViewController as ComposeViewController
+    //    if(segue.identifier == "tweetDetailSegue")
+     //   {
+    //        var tweetDetailsViewController = tweetDetinationNavigationController.viewControllers[0] as TweetDetailViewController
+            var index = tableView.indexPathForSelectedRow()?.row
+            println(" tweet index = \(index!)")
+            tweetDetailsViewController.tweetIndex = index!
+            tweetDetailsViewController.tweetsCopy = tweets
+            tweetDetailsViewController.delegate = self
+        }
+        else
+ //       {
+        var composeViewController = segue.destinationViewController as ComposeViewController
+
+            composeViewController.delegate = self
+            
+//        }
+    } */
+
     
     func tweetFavorated(tweetIndex: Int)
     {
