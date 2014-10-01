@@ -34,7 +34,7 @@ class TweetsieClient: BDBOAuth1RequestOperationManager {
             
             
             }, failure: { (operaton:AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println("error getting current user")
+                println("error getting current user \(error)")
                 completion(tweets: nil, error: error)
                 self.loginCompletion?(user: nil, error: error)
         })

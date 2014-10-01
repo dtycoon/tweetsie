@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             (user: User?, error: NSError?) in
             if user != nil {
                 println("calling anotherloginSegue segue")
-                self.performSegueWithIdentifier("tempSegue", sender: self)
+                self.performSegueWithIdentifier("loginSegue", sender: self)
                 //perform segue
             } else {
                 println("user is nil")
